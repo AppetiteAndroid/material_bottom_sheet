@@ -1,8 +1,9 @@
 import 'dart:async';
 
-import 'package:appetite_chef_list/core/widget/bottomsheet/ModalBottomSheet.dart';
-import 'package:appetite_chef_list/core/widget/bottomsheet/Scroll.dart';
 import 'package:flutter/material.dart';
+import 'package:material_bottom_sheet/modal_scroll_controller.dart';
+
+import 'ModalBottomSheet.dart';
 
 const Duration _bottomSheetDuration = Duration(milliseconds: 400);
 
@@ -19,7 +20,7 @@ class _ModalBottomSheet<T> extends StatefulWidget {
   }) : super(key: key);
 
   final double? closeProgressThreshold;
-  final ModalBottomSheetRout<T> route;
+  final ModalBottomSheetRoute<T> route;
   final bool expanded;
   final bool bounce;
   final bool enableDrag;
@@ -122,8 +123,8 @@ class _ModalBottomSheetState<T> extends State<_ModalBottomSheet<T>> {
   }
 }
 
-class ModalBottomSheetRout<T> extends PageRoute<T> {
-  ModalBottomSheetRout({
+class ModalBottomSheetRoute<T> extends PageRoute<T> {
+  ModalBottomSheetRoute({
     this.closeProgressThreshold,
     this.containerBuilder,
     required this.builder,
@@ -209,10 +210,10 @@ class ModalBottomSheetRout<T> extends PageRoute<T> {
   }
 
   @override
-  bool canTransitionTo(TransitionRoute<dynamic> nextRoute) => nextRoute is ModalBottomSheetRout;
+  bool canTransitionTo(TransitionRoute<dynamic> nextRoute) => nextRoute is ModalBottomSheetRoute;
 
   @override
-  bool canTransitionFrom(TransitionRoute<dynamic> previousRoute) => previousRoute is ModalBottomSheetRout || previousRoute is PageRoute;
+  bool canTransitionFrom(TransitionRoute<dynamic> previousRoute) => previousRoute is ModalBottomSheetRoute || previousRoute is PageRoute;
 
   Widget getPreviousRouteTransition(
     BuildContext context,
@@ -249,7 +250,7 @@ Future<T?> showCustomModalBottomSheet<T>({
   final hasMaterialLocalizations = Localizations.of<MaterialLocalizations>(context, MaterialLocalizations) != null;
   final barrierLabel = hasMaterialLocalizations ? MaterialLocalizations.of(context).modalBarrierDismissLabel : '';
 
-  final result = await Navigator.of(context, rootNavigator: useRootNavigator).push(ModalBottomSheetRout<T>(
+  final result = await Navigator.of(context, rootNavigator: useRootNavigator).push(ModalBottomSheetRoute<T>(
     builder: builder,
     bounce: bounce,
     containerBuilder: containerWidget,
