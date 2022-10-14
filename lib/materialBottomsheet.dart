@@ -1,9 +1,10 @@
-import 'package:appetite_chef_list/core/widget/bottomsheet/ModalBottomSheet.dart';
-import 'package:appetite_chef_list/core/widget/bottomsheet/bottomsheet.dart';
 import 'package:flutter/material.dart';
+import 'package:material_bottom_sheet/bottomsheet.dart';
+
+import 'ModalBottomSheet.dart';
 
 /// Shows a modal material design bottom sheet.
-Future<T?> showMaterialCustomModalBottomSheet<T>({
+Future<T?> showMaterialModalBottomSheet<T>({
   required BuildContext context,
   required WidgetBuilder builder,
   Color? backgroundColor,
@@ -24,7 +25,7 @@ Future<T?> showMaterialCustomModalBottomSheet<T>({
 }) async {
   assert(debugCheckHasMediaQuery(context));
   assert(debugCheckHasMaterialLocalizations(context));
-  final result = await Navigator.of(context, rootNavigator: useRootNavigator).push(ModalBottomSheetRout<T>(
+  final result = await Navigator.of(context, rootNavigator: useRootNavigator).push(ModalBottomSheetRoute<T>(
     builder: builder,
     closeProgressThreshold: closeProgressThreshold,
     containerBuilder: _materialContainerBuilder(

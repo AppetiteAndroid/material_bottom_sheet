@@ -1,7 +1,9 @@
 library material_bottom_sheet;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+export 'bottomsheet.dart';
+export 'curves.dart';
+export 'material_bottom_sheet.dart';
+export 'materialBottomsheet.dart';
+export 'ScrollToStatus.dart';
+export 'modal_scroll_controller.dart';
+export 'ModalBottomSheet.dart';
