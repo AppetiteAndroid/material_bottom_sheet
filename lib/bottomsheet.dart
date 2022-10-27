@@ -213,7 +213,7 @@ class ModalBottomSheetRoute<T> extends PageRoute<T> {
   bool canTransitionTo(TransitionRoute<dynamic> nextRoute) => nextRoute is ModalBottomSheetRoute;
 
   @override
-  bool canTransitionFrom(TransitionRoute<dynamic> previousRoute) => previousRoute is ModalBottomSheetRoute || previousRoute is PageRoute;
+  bool canTransitionFrom(TransitionRoute<dynamic> previousRoute) => previousRoute is ModalBottomSheetRoute;
 
   Widget getPreviousRouteTransition(
     BuildContext context,
