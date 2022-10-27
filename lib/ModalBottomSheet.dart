@@ -194,7 +194,7 @@ class ModalBottomSheetState extends State<ModalBottomSheet> with TickerProviderS
     final progress = primaryDelta / (_childHeight ?? primaryDelta);
 
     if (widget.shouldClose != null && hasReachedWillPopThreshold) {
-      _cancelClose();
+      //_cancelClose();
       final canClose = await shouldClose();
       if (canClose) {
         _close();
